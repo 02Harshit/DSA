@@ -1,34 +1,20 @@
+package Recursion;
 import java.util.Scanner;
 public class Palindrome {
+    static boolean isPalindrome(String str,int i,int n){
+        if(i>=n/2) return true;
+        if(str.charAt(i)==str.charAt(n-i-1)) 
+           return isPalindrome(str,i+1,n);
+        else return false;
+        
+    }
     public static void main(String[] args) {
-        Scanner sc=new Scanner(System.in);
-        int n=sc.nextInt();
-        if(n<0){
-            System.out.println(false);
-            sc.close();
-            return;
-        }
-        int orig_num=n;
-        int rev_num=0;
-        while(n>0){
-            int ld=n%10;
-            rev_num=(rev_num*10) + ld;
-            n=n/10;
-        }
-        if(rev_num==orig_num) System.out.println(true);
-        else System.out.println(false);
-        sc.close();
+        Scanner scan=new Scanner(System.in);
+        System.out.println("Enter a string : ");
+        String str=scan.next();
+        int n=str.length();
+        if(isPalindrome(str,0,n)) System.out.println("Given string is a palindrome!");
+        else System.out.println("Given string is not a palindrome!");
+        scan.close();
     }
 }
-// BEST SOLUTION 
-// public boolean isPalindrome(int x) {
-//     if(x<0){
-//         return false;
-//     }
-//     int r=0;
-//     int a=x;
-//     while(x>0){
-//         r=(r*10)+(x%10);
-//         x/=10;
-//     }
-//     return a==r;
